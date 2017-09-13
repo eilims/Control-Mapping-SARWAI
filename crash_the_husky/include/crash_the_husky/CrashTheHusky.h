@@ -19,12 +19,7 @@
 #include <nav_msgs/Odometry.h>
 #include <sensor_msgs/Imu.h>
 #include <tf/tfMessage.h>
-#include <vehicle/position.h>
-#include <vehicle/vehicle_control.h>
 #include <sensor_msgs/LaserScan.h>
-/*
- Note that vehicle control uses the names space gcs
- */
 
 class CrashTheHusky
 {
@@ -40,14 +35,12 @@ public:
     void updateTF(const tf::tfMessage& msg);
     void updateOdom(const nav_msgs::Odometry& msg);
     void updateLaser(const sensor_msgs::LaserScan& msg);
-    
-    // Getter functions
-    gcs::Position getRobotPosition();
+
+  // Getter functions
     nav_msgs::OccupancyGrid getMap();
     tf::tfMessage getTFMessage();
-    
-private:
-    gcs::Position robotPosition;
+
+ private:
     nav_msgs::OccupancyGrid map;
     nav_msgs::Odometry odom;
     sensor_msgs::Imu imu;

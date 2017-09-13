@@ -7,7 +7,6 @@ find_package(catkin REQUIRED
                     roscpp
                     roslib
                     nav_msgs
-                    vehicle
 )
 
 

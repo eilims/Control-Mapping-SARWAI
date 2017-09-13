@@ -123,9 +123,4 @@ tf::tfMessage CrashTheHusky::getTFMessage()
     return this->tfMessage;   
 }
 
-gcs::Position CrashTheHusky::getRobotPosition()
-{
-    return this->robotPosition;
-    
-}
 
