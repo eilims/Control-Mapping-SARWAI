@@ -1,0 +1,8 @@
+prefix=/home/matthew/Documents/husky_kinetic/install
+
+Name: husky_description
+Description: Description of husky_description
+Version: 0.2.7
+Cflags: 
+Libs: -L/home/matthew/Documents/husky_kinetic/install/lib 
+Requires: 

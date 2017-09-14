@@ -1,0 +1,8 @@
+prefix=/home/matthew/Documents/husky_kinetic/devel
+
+Name: sensor_sim_gazebo
+Description: Description of sensor_sim_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/matthew/Documents/husky_kinetic/devel/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/matthew/Documents/husky_kinetic/install
+
+Name: husky_msgs
+Description: Description of husky_msgs
+Version: 0.2.7
+Cflags: -I/home/matthew/Documents/husky_kinetic/install/include
+Libs: -L/home/matthew/Documents/husky_kinetic/install/lib 
+Requires: std_msgs message_runtime
