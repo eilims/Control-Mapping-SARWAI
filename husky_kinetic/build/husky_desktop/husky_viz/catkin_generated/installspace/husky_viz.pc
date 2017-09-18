@@ -1,8 +1,0 @@
-prefix=/home/matthew/Documents/husky_kinetic/install
-
-Name: husky_viz
-Description: Description of husky_viz
-Version: 0.2.2
-Cflags: 
-Libs: -L/home/matthew/Documents/husky_kinetic/install/lib 
-Requires: 

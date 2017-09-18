@@ -1,2 +1,0 @@
-custom_keyboard_interface/custom_keyboard_interface:husky/husky_control:husky/husky_description:husky/husky_msgs:husky/husky_navigation:husky_desktop/husky_desktop:husky_desktop/husky_viz:husky_simulator/husky_gazebo:husky_simulator/husky_simulator:interactive_marker_twist_server:sensor_sim_gazebo:universal_robot/ur_description
--DCATKIN_DEVEL_PREFIX=/home/matthew/Documents/husky_kinetic/devel -DCMAKE_INSTALL_PREFIX=/home/matthew/Documents/husky_kinetic/install -G Unix Makefiles

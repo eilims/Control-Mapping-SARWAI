@@ -1,8 +1,0 @@
-prefix=/home/matthew/Documents/husky_kinetic/install
-
-Name: custom_keyboard_interface
-Description: Description of custom_keyboard_interface
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/matthew/Documents/husky_kinetic/install/lib 
-Requires: 
