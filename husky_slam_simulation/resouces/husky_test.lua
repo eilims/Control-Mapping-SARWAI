@@ -24,9 +24,11 @@ options = {
   odom_frame = "odom",
   provide_odom_frame = true,
   use_odometry = true,
+  -- Set use_laser_scan to false for PointCloud usage
   use_laser_scan = true,
   use_multi_echo_laser_scan = false, 
   num_subdivisions_per_laser_scan = 10,
+  -- Set num_point_clouds to 1 for PointCloud usage
   num_point_clouds = 0,
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.3,
