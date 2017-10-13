@@ -15,6 +15,8 @@
 -->
 
 <launch> 
+
+
 	<node
 		pkg="husky_slam_simulation"
 		type="husky_slam_simulation_node"
@@ -39,7 +41,7 @@
 		pkg="rviz"
 		type="rviz"
 		name="rviz"
-		args="-d $(find husky_slam_simulation)/resources/kinect_google_cart.rviz"
+		args="-d $(find husky_slam_simulation)/resources/google_cart.rviz"
 	/>
 	    
     <node
@@ -49,12 +51,6 @@
         name="stereo_image_proc"
     />
     
-    <node
-        pkg="topic_tools"
-        type="relay"
-        name="stereo_to_points2"
-        args="/stereo/points2 /points2"
-    />
 
 	<include file="$(find husky_gazebo)/launch/husky_playpen_kinect.launch"/>
 

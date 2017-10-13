@@ -15,6 +15,7 @@
 #define HUSKYSLAM_H
 
 #include <nav_msgs/Odometry.h>
+#include <sensor_msgs/Imu.h>
 
 /* Implementation below :
  *  HuskySlam thingy;
@@ -40,10 +41,12 @@ class HuskySlam {
 
   //Callback methods
   void updateOdom(const nav_msgs::Odometry& msg);
+  void updateIMU(const sensor_msgs::Imu& msg);
 
 
  private:
   nav_msgs::Odometry odom;
+  sensor_msgs::Imu imu;
 };
 
 #endif /* HUSKYSLAM_H */
