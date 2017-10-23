@@ -19,10 +19,10 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  tracking_frame = "base_link",
-  published_frame = "base_link",
+  tracking_frame = "test_link",
+  published_frame = "test_link",
   odom_frame = "odom",
-  provide_odom_frame = false,
+  provide_odom_frame = true,
   use_odometry = true,
   num_laser_scans = 1,
   num_multi_echo_laser_scans = 0,
@@ -33,7 +33,7 @@ options = {
   pose_publish_period_sec = 5e-3,
   trajectory_publish_period_sec = 30e-3,
   rangefinder_sampling_ratio = 1.,
-  odometry_sampling_ratio = 1,
+  odometry_sampling_ratio = 1.,
   imu_sampling_ratio = 1.,
 }
 
