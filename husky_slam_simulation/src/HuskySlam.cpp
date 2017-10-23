@@ -22,30 +22,22 @@ void HuskySlam::run()
 {
     ros::NodeHandle nh;
     //Publishers
-    ros::Publisher odomPub = nh.advertise<nav_msgs::Odometry>("odom", 1000);
-    ros::Publisher imuPub = nh.advertise<sensor_msgs::Imu>("imu", 1000);
+    ros::Publisher tfPub = nh.advertise<tf::tfMessage>("tf", 1000);
     //Subscribers
-    ros::Subscriber odomSub = nh.subscribe("odometry/filtered", 1000, &HuskySlam::updateOdom, this);
-    ros::Subscriber imuSub = nh.subscribe("imu/data", 1000, &HuskySlam::updateIMU, this);
+    ros::Subscriber tfSub = nh.subscribe("tf", 1000, &HuskySlam::updateTF, this);
     //Set publishing speed to 50Hz
-    ros::Rate rate(50);
+    ros::Rate rate(100);
 
     while (ros::ok())
     {
-        odomPub.publish(this->odom);
-        imuPub.publish(this->imu);
+        tfPub.publish(this->tf);
         ros::spinOnce();
         rate.sleep();
     }
 }
 
 //Called when a message from /odometry/filtered is recieved.
-void HuskySlam::updateOdom(const nav_msgs::Odometry& msg)
+void HuskySlam::updateTF(const tf::tfMessage& msg)
 {
-    this->odom = msg;
+    this->tf = msg;
 }
-
-void HuskySlam::updateIMU(const sensor_msgs::Imu& msg)
-{
-    this->imu = msg;
-}z
