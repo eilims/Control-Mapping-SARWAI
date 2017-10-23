@@ -14,8 +14,7 @@
 #ifndef HUSKYSLAM_H
 #define HUSKYSLAM_H
 
-#include <nav_msgs/Odometry.h>
-#include <sensor_msgs/Imu.h>
+#include <tf/tfMessage.h>
 
 /* Implementation below :
  *  HuskySlam thingy;
@@ -40,13 +39,15 @@ class HuskySlam {
   void run();
 
   //Callback methods
-  void updateOdom(const nav_msgs::Odometry& msg);
-  void updateIMU(const sensor_msgs::Imu& msg);
+  void updateTF(const tf::tfMessage& msg);
+
+  void parseTF();
 
 
  private:
-  nav_msgs::Odometry odom;
-  sensor_msgs::Imu imu;
+  tf::tfMessage tf;
+  int sec;
+  int nsec;
 };
 
 #endif /* HUSKYSLAM_H */
