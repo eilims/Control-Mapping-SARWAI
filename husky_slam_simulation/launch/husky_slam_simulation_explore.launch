@@ -15,6 +15,12 @@
 -->
 
 <launch> 
+    
+    <node
+		pkg="husky_slam_simulation"
+		type="husky_slam_simulation_node"
+		name="tf_modifier"
+	/>
 
 	<node
 		pkg="cartographer_ros"
