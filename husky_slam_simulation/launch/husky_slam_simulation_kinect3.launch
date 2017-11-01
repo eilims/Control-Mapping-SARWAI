@@ -1,0 +1,92 @@
+<!--
+  Copyright 2016 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<launch> 
+
+	<node
+		pkg="cartographer_ros"
+		type="cartographer_occupancy_grid_node"
+		name="cartographer_map"
+	/>
+	
+    <!-- husky_slam_simulation -->
+	<node
+		pkg="cartographer_ros"
+		type="cartographer_node"
+		name="cartographer"
+		args="-configuration_directory $(find husky_slam_simulation)/resources configuration_files -configuration_basename husky_test3.lua"
+	/>
+	
+
+    <!-- $(find husky_slam_simulation)/resources/ -->
+
+	<node
+		pkg="rviz"
+		type="rviz"
+		name="rviz"
+		args="-d  $(find husky_gazebo)/launch/demo_2d.rviz"
+	/>
+	    
+    <node
+        ns="stereo"
+        pkg="stereo_image_proc"
+        type="stereo_image_proc"
+        name="stereo_image_proc"
+    />
+
+    <node
+        pkg="topic_tools"
+        type="relay"
+        name="odom_relay"
+        args="/odometry/filtered /odom"
+    />
+
+	<include file="$(find husky_gazebo)/launch/husky_playpen_kinect.launch"/>
+
+    <node 
+        pkg="pointcloud_to_laserscan" 
+        type="pointcloud_to_laserscan_node" 
+        name="pointcloud_to_laserscan" 
+        output="screen">
+
+        <remap from="cloud_in" to="stereo/points2"/>
+        <remap from="scan" to="/scan"/>
+        <!-- min_height: 0.05, scan_time: 0.3333, angle_min: -0.52 # -30.0*M_PI/180.0, angle_max: 0.52 # 30.0*M_PI/180.0 -->
+        <rosparam>
+            target_frame: base_link # Leave empty to output scan in the pointcloud frame
+            tolerance: 1.0
+            min_height: 0.05
+            max_height: 1.0
+
+            angle_min: -0.52 # -30.0*M_PI/180.0
+            angle_max: 0.52 # 30.0*M_PI/180.0
+            angle_increment: 0.005 # M_PI/360.0
+            scan_time: 10.0 <!-- 30.0 -->
+            range_min: 0.45
+            range_max: 300
+            use_inf: true
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2->inf : Parallelism level
+            concurrency_level: 1
+        </rosparam>
+
+    </node>
+    
+
+</launch>
