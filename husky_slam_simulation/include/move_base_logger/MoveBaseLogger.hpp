@@ -18,6 +18,9 @@
 #include <actionlib_msgs/GoalStatus.h>
 #include <move_base_msgs/MoveBaseActionFeedback.h>
 #include <move_base_msgs/MoveBaseActionResult.h>
+#include <iostream>
+#include <fstream>
+#include <sys/stat.h>
 
 class MoveBaseLogger {
 public:
@@ -35,8 +38,13 @@ public:
     void updateResult(const move_base_msgs::MoveBaseActionResult& msg);
     
 private:
+    
+    void createFile(std::string* fileName);
+    bool fileExists(std::string filename);
     geometry_msgs::Twist twistMsg;
     actionlib_msgs::GoalStatus goalStatusMsg;
+    move_base_msgs::MoveBaseActionFeedback feedbackMsg;
+    move_base_msgs::MoveBaseActionResult resultMsg; 
 };
 
 #endif /* MOVEBASELOGGER_HPP */
