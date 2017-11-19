@@ -40,12 +40,12 @@ class HuskySlam {
 
   //Callback methods
   void updateTF(const tf::tfMessage& msg);
-
+  
   void parseTF();
 
 
  private:
-  tf::tfMessage tf;
+  tf::tfMessage tf_value;
   int sec;
   int nsec;
 };
